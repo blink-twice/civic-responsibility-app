@@ -13,78 +13,153 @@ export type QuizQuestion = {
 
 export const quizQuestions: QuizQuestion[] = [
   {
-    id: "qq-garbage-primary-authority",
-    scenarioId: "mumbai-garbage-not-collected-3-days",
+    id: "q1",
+    scenarioId: "mumbai-garbage-1",
     question:
-      "Garbage has not been collected from your lane for three days in Mumbai. Who is the most appropriate first point of contact?",
+      "In Mumbai, who is usually the first authority you should approach if garbage in your lane has not been collected for 3 days?",
     options: [
-      "Local corporator and BMC ward office (Solid Waste Management)",
-      "Member of Parliament (MP)",
-      "Mumbai Police station",
-      "Chief Minister’s Office (CMO)",
+      "Your MLA",
+      "Your ward corporator / ward office",
+      "Your MP",
+      "The Chief Minister"
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation:
-      "Day‑to‑day garbage collection in Mumbai is handled by BMC through the ward office and its Solid Waste Management staff. Your local corporator and the ward office are the right first points of contact, rather than state‑ or national‑level representatives.",
+      "Local garbage collection and street cleanliness are municipal subjects handled at ward level. Your ward corporator and ward office can directly push the solid waste department to resolve the issue."
   },
   {
-    id: "qq-potholes-local-road",
-    scenarioId: "mumbai-local-road-potholes",
+    id: "q2",
+    scenarioId: "mumbai-potholes-1",
     question:
-      "Your internal neighbourhood road (not a highway) has dangerous potholes. Which combination is most directly responsible for getting it repaired?",
+      "If an internal neighbourhood road has developed dangerous potholes, which combination is most appropriate to start with?",
     options: [
-      "BMC ward road engineer and local corporator",
-      "National Highways Authority of India (NHAI)",
-      "Traffic police only",
-      "Railway authorities",
+      "Complain only to the traffic police",
+      "Write directly to the Municipal Commissioner",
+      "Approach the ward corporator and ward roads engineer",
+      "File a case in court as the first step"
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation:
-      "Local internal roads that are under BMC are maintained by ward‑level road engineers, who coordinate with contractors. The corporator can raise and follow up on complaints, but NHAI and railways are responsible only for specific highway or railway assets.",
+      "Construction and maintenance of most city roads are handled by the municipal corporation’s engineering departments. The corporator works with ward and zonal engineers to prioritise and execute such repairs."
   },
   {
-    id: "qq-streetlights-not-working",
-    scenarioId: "mumbai-streetlights-not-working",
+    id: "q3",
+    scenarioId: "mumbai-streetlight-1",
     question:
-      "Several streetlights on your residential lane are not working for over a week. Which authority should you primarily approach to get them fixed?",
+      "Several streetlights on your lane are not working. Which authority is directly responsible for getting them repaired?",
     options: [
-      "BMC ward electrical / streetlighting department (or BEST where applicable)",
-      "Local MLA only",
-      "Fire Brigade",
-      "Election Commission",
+      "The local police station",
+      "The municipal streetlighting / electrical department via ward office",
+      "The electricity distribution company only",
+      "The District Collector"
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation:
-      "Streetlights on municipal roads are usually maintained by BMC’s electrical department or BEST in specific areas. Complaints should go through the ward office or designated streetlight complaint channels, not directly to your MLA or unrelated bodies.",
+      "Streetlights on municipal roads are generally installed and maintained by the municipal corporation’s electrical department, coordinated through ward offices and engineering sections."
   },
   {
-    id: "qq-irregular-water-supply",
-    scenarioId: "mumbai-irregular-local-water-supply",
+    id: "q4",
+    scenarioId: "mumbai-water-1",
     question:
-      "Your building and nearby buildings are facing irregular municipal water supply and low pressure with no official shutdown announced. Who is the correct technical authority to contact first?",
+      "Your building’s municipal water supply has become irregular and low‑pressure. Where should you normally raise this first?",
     options: [
-      "BMC ward hydraulic (water) engineer",
-      "District Collector",
-      "Member of Parliament (MP)",
-      "Local police inspector",
+      "Directly with the state water resources minister",
+      "With the ward corporator and ward water works engineer",
+      "Only with your housing society office-bearers",
+      "With the local MP"
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation:
-      "Local distribution of municipal water within Mumbai is handled by BMC’s Hydraulics Department, through ward‑level hydraulic engineers. They are responsible for diagnosing and fixing local pipeline, valve, and supply issues.",
+      "Within the city, distribution of treated water through pipelines is a municipal responsibility. Ward-level water works staff and your corporator are the right starting point for pressure and timing issues."
   },
   {
-    id: "qq-park-maintenance",
-    scenarioId: "mumbai-park-poorly-maintained",
+    id: "q5",
+    scenarioId: "mumbai-drainage-1",
     question:
-      "A BMC garden/playground in your neighbourhood has broken equipment, overgrown grass, and poor cleanliness. Whom should you involve first to improve its maintenance?",
+      "Your street gets waterlogged even after moderate rain because roadside drains are choked. Who should you primarily push to act?",
     options: [
-      "Local corporator and BMC ward gardens/parks department",
-      "Central Public Works Department (CPWD)",
-      "Local MLA only",
-      "Resident Welfare Association (RWA) only",
+      "The State Disaster Management Authority",
+      "The ward corporator and storm‑water / drainage department",
+      "The Election Commission",
+      "The local railway authorities"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Routine desilting and maintenance of local storm‑water drains is handled by municipal engineering and drainage departments at ward level, which corporators can strongly influence."
+  },
+  {
+    id: "q6",
+    scenarioId: "mumbai-park-1",
+    question:
+      "A neighbourhood municipal park has broken play equipment and overgrown grass. Which is the most appropriate first escalation?",
+    options: [
+      "Approach the ward corporator and parks/gardens department",
+      "Complain to the Forest Department",
+      "Write to your MP about national urban policy",
+      "Complain to the local private builder"
     ],
     correctIndex: 0,
     explanation:
-      "Municipal parks and playgrounds in Mumbai are maintained by BMC’s gardens/parks department under the ward office. Your corporator and the ward gardens staff are the appropriate first contacts; state or central public works departments are not responsible for these local BMC parks.",
+      "Maintenance of municipal gardens and playgrounds is part of the city corporation’s mandate. Ward-level parks/gardens staff and corporators are responsible for keeping local parks usable."
   },
+  {
+    id: "q7",
+    scenarioId: "mumbai-building-permissions-1",
+    question:
+      "You suspect an extra floor is being added illegally on a neighbouring building. Which authority has formal powers to act?",
+    options: [
+      "Ward building and permissions department of the municipal corporation",
+      "Only the local police station",
+      "The Resident Welfare Association (RWA) president",
+      "The local MLA alone, via letter"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Sanctioning building plans and acting against unauthorised constructions fall under municipal building proposals and enforcement departments. Complaints should be made to ward building officials, with corporators helping to follow up."
+  },
+  {
+    id: "q8",
+    scenarioId: "mumbai-schools-1",
+    question:
+      "A nearby municipal primary school has leaking roofs and broken toilets. Which level of government runs such schools in big cities like Mumbai?",
+    options: [
+      "Municipal corporation education department",
+      "Only the central government",
+      "Only the state education board",
+      "Private companies under CSR"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Urban local bodies in large cities often run primary schools and are responsible for building maintenance and basic facilities, alongside state-level roles in curriculum and broader policy."
+  },
+  {
+    id: "q9",
+    scenarioId: "mumbai-public-health-1",
+    question:
+      "An overflowing public dustbin near a bus stop has become a source of foul smell and rodents. Whose job is it to keep such public spaces clean?",
+    options: [
+      "Only shopkeepers nearby",
+      "The municipal corporation’s solid waste and public health departments",
+      "The local MLA’s personal staff",
+      "The traffic police"
+    ],
+    correctIndex: 1,
+    explanation:
+      "Municipal corporations are tasked with garbage collection, sanitation and pest control in public areas, through solid waste and public health departments."
+  },
+  {
+    id: "q10",
+    scenarioId: "mumbai-primary-health-1",
+    question:
+      "A municipal dispensary in your area frequently remains closed during working hours. Which combination is most appropriate to pursue?",
+    options: [
+      "Ward corporator and municipal health department / Medical Officer of Health",
+      "Only the local MP",
+      "The District Collector alone",
+      "The local police chowki"
+    ],
+    correctIndex: 0,
+    explanation:
+      "Primary health centres and dispensaries in cities are usually run by municipal corporations as part of their public health functions. Ward-level health officials and corporators can push for proper staffing and timings."
+  }
 ];

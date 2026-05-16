@@ -3,7 +3,6 @@
 
 import React, { useMemo, useState } from "react";
 import { scenarios, type Scenario } from "@/data/scenarios";
-import { AnimatePresence, motion } from "framer-motion";
 
 type City = Scenario["city"];
 
@@ -14,13 +13,17 @@ const AdvisorPage: React.FC = () => {
 
   // Unique cities from scenarios (future-proofing)
   const cities = useMemo<City[]>(() => {
-    const unique = Array.from(new Set(scenarios.map((scenario) => scenario.city)));
+    const unique = Array.from(
+      new Set(scenarios.map((scenario) => scenario.city))
+    );
     return unique as City[];
   }, []);
 
   // Categories for the selected city
   const categories = useMemo<string[]>(() => {
-    const filtered = scenarios.filter((scenario) => scenario.city === selectedCity);
+    const filtered = scenarios.filter(
+      (scenario) => scenario.city === selectedCity
+    );
     return Array.from(new Set(filtered.map((scenario) => scenario.category)));
   }, [selectedCity]);
 
@@ -29,9 +32,12 @@ const AdvisorPage: React.FC = () => {
     if (!selectedCategory) return [];
     const filtered = scenarios.filter(
       (scenario) =>
-        scenario.city === selectedCity && scenario.category === selectedCategory
+        scenario.city === selectedCity &&
+        scenario.category === selectedCategory
     );
-    return Array.from(new Set(filtered.map((scenario) => scenario.subcategory)));
+    return Array.from(
+      new Set(filtered.map((scenario) => scenario.subcategory))
+    );
   }, [selectedCity, selectedCategory]);
 
   // Find the matching scenario, if any
@@ -54,13 +60,17 @@ const AdvisorPage: React.FC = () => {
     setSelectedSubcategory("");
   };
 
-  const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleCategoryChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
     const newCategory = event.target.value;
     setSelectedCategory(newCategory);
     setSelectedSubcategory("");
   };
 
-  const handleSubcategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSubcategoryChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
     setSelectedSubcategory(event.target.value);
   };
 
@@ -73,7 +83,10 @@ const AdvisorPage: React.FC = () => {
       <section className="space-y-4 rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
         {/* City select */}
         <div className="flex flex-col gap-1">
-          <label htmlFor="city" className="text-sm font-medium text-slate-800">
+          <label
+            htmlFor="city"
+            className="text-sm font-medium text-slate-800"
+          >
             City
           </label>
           <select
@@ -148,65 +161,55 @@ const AdvisorPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Animated result card */}
-      <AnimatePresence mode="wait">
-        {matchingScenario && (
-          <motion.section
-            key={matchingScenario.id}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            whileHover={{ y: -4 }}
-            className="mt-6 rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition-transform duration-200"
-          >
-            <h2 className="mb-2 text-lg font-semibold text-slate-900">
-              Recommended authority
-            </h2>
+      {/* Result card */}
+      {matchingScenario && (
+        <section className="mt-6 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 className="mb-2 text-lg font-semibold text-slate-900">
+            Recommended authority
+          </h2>
 
-            <p className="mb-1 text-sm font-medium text-slate-800">
-              Primary authority:
-            </p>
-            <p className="mb-3 text-sm text-slate-900">
-              {matchingScenario.primaryAuthority}
-            </p>
+          <p className="mb-1 text-sm font-medium text-slate-800">
+            Primary authority:
+          </p>
+          <p className="mb-3 text-sm text-slate-900">
+            {matchingScenario.primaryAuthority}
+          </p>
 
-            <p className="mb-1 text-sm font-medium text-slate-800">
-              Escalation / secondary authority:
-            </p>
-            <p className="mb-3 text-sm text-slate-900">
-              {matchingScenario.secondaryAuthority}
-            </p>
+          <p className="mb-1 text-sm font-medium text-slate-800">
+            Escalation / secondary authority:
+          </p>
+          <p className="mb-3 text-sm text-slate-900">
+            {matchingScenario.secondaryAuthority}
+          </p>
 
-            <p className="mb-3 text-sm text-slate-800">
-              {matchingScenario.explanation}
-            </p>
+          <p className="mb-3 text-sm text-slate-800">
+            {matchingScenario.explanation}
+          </p>
 
-            {matchingScenario.actionLinks &&
-              matchingScenario.actionLinks.length > 0 && (
-                <div className="mt-3 space-y-1">
-                  <p className="text-sm font-medium text-slate-800">
-                    Suggested next steps:
-                  </p>
-                  <ul className="list-disc pl-5 text-sm text-blue-700">
-                    {matchingScenario.actionLinks.map((link) => (
-                      <li key={link.url}>
-                        <a
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline transition-colors duration-200 hover:text-blue-800"
-                        >
-                          {link.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-          </motion.section>
-        )}
-      </AnimatePresence>
+          {matchingScenario.actionLinks &&
+            matchingScenario.actionLinks.length > 0 && (
+              <div className="mt-3 space-y-1">
+                <p className="text-sm font-medium text-slate-800">
+                  Suggested next steps:
+                </p>
+                <ul className="list-disc pl-5 text-sm text-blue-700">
+                  {matchingScenario.actionLinks.map((link) => (
+                    <li key={link.url}>
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-blue-800"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+        </section>
+      )}
     </>
   );
 };
