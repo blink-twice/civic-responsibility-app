@@ -195,7 +195,7 @@ const QuizPage: React.FC = () => {
       <div className="mb-5">
         <h1 className="mb-2 text-2xl font-semibold text-slate-900">Civic roles quiz</h1>
         <p className="text-sm text-slate-700">
-          Each attempt gives you {QUIZ_LENGTH} random questions. The goal is not just to get a score, but to notice which kinds of issues you instinctively send to the wrong office.
+          Each attempt gives you {QUIZ_LENGTH} random questions. The goal is to understand which kinds of service delivery and civic issues need to be approached.
         </p>
       </div>
 

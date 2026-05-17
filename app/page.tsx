@@ -19,7 +19,7 @@ const HomePage = () => {
         </div>
 
         <h1 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-          Who should I actually approach for this problem?
+          Who should I approach for this problem?
         </h1>
 
         <p className="mb-3 max-w-2xl text-sm text-slate-800 sm:text-base">
