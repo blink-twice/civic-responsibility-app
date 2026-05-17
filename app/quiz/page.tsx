@@ -60,6 +60,7 @@ const QuizPage: React.FC = () => {
       if (saved) {
         const parsed = JSON.parse(saved) as QuizSession;
         if (parsed.attemptQuestions?.length) {
+          // eslint-disable-next-line react-hooks/set-state-in-effect
           setQuizState(parsed);
         }
       }
@@ -232,7 +233,7 @@ const QuizPage: React.FC = () => {
                   const isCorrect = showExplanation && currentQuestion.correctIndex === index;
                   const isIncorrect = showExplanation && isSelected && currentQuestion.correctIndex !== index;
 
-                  let baseClasses =
+                  const baseClasses =
                     "w-full text-left rounded-lg border px-3 py-3 text-sm transition-colors transition-transform duration-200 ease-out";
                   let colorClasses =
                     "border-slate-300 bg-white text-slate-900 hover:bg-slate-50";

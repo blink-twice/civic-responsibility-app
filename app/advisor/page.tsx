@@ -1,7 +1,7 @@
 // app/advisor/page.tsx
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { Suspense, useMemo, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { scenarios, type Scenario } from "@/data/scenarios";
@@ -131,33 +131,27 @@ const scenarioMatchesQuery = (scenario: Scenario, query: string) => {
     .includes(q);
 };
 
-const AdvisorPage: React.FC = () => {
+const AdvisorPageContent: React.FC = () => {
   const searchParams = useSearchParams();
   const scenarioIdFromQuery = searchParams.get("scenario");
   const returnTo = searchParams.get("returnTo");
 
-  const [selectedCity, setSelectedCity] = useState<City>("Mumbai");
-  const [query, setQuery] = useState("");
-  const [selectedGroup, setSelectedGroup] = useState<string>("");
-  const [selectedScenarioId, setSelectedScenarioId] = useState<string>("");
+  const initialScenario = useMemo(
+    () => scenarios.find((scenario) => scenario.id === scenarioIdFromQuery),
+    [scenarioIdFromQuery]
+  );
+
+  const initialGroupId = useMemo(() => {
+    if (!initialScenario) return "";
+    const match = browseGroups.find((group) => group.matcher(initialScenario));
+    return match?.id ?? "";
+  }, [initialScenario]);
+
+  const [selectedCity, setSelectedCity] = useState<City>(initialScenario?.city ?? "Mumbai");
+  const [query, setQuery] = useState(initialScenario?.subcategory ?? "");
+  const [selectedGroup, setSelectedGroup] = useState<string>(initialGroupId);
+  const [selectedScenarioId, setSelectedScenarioId] = useState<string>(initialScenario?.id ?? "");
   const [showFallbackHelp, setShowFallbackHelp] = useState(false);
-
-  useEffect(() => {
-    if (!scenarioIdFromQuery) return;
-
-    const scenarioFromQuery = scenarios.find((scenario) => scenario.id === scenarioIdFromQuery);
-    if (!scenarioFromQuery) return;
-
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setSelectedCity(scenarioFromQuery.city);
-    setSelectedScenarioId(scenarioFromQuery.id);
-    setQuery(scenarioFromQuery.subcategory);
-
-    const matchingGroup = browseGroups.find((group) => group.matcher(scenarioFromQuery));
-    if (matchingGroup) {
-      setSelectedGroup(matchingGroup.id);
-    }
-  }, [scenarioIdFromQuery]);
 
   const cities = useMemo<City[]>(() => {
     const unique = Array.from(new Set(scenarios.map((scenario) => scenario.city)));
@@ -310,7 +304,7 @@ const AdvisorPage: React.FC = () => {
           </div>
 
           {topSuggestions.length > 0 ? (
-            <div className="max-h-105 overflow-y-auto p-2">
+            <div className="max-h-[420px] overflow-y-auto p-2">
               <div className="space-y-2">
                 {topSuggestions.map((scenario) => {
                   const isSelected = selectedScenarioId === scenario.id;
@@ -471,6 +465,25 @@ const AdvisorPage: React.FC = () => {
         </div>
       </section>
     </>
+  );
+};
+
+const AdvisorPageFallback = () => {
+  return (
+    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+      <h1 className="mb-2 text-2xl font-semibold text-slate-900">
+        Who is responsible for my issue?
+      </h1>
+      <p className="text-sm text-slate-700">Loading Advisor...</p>
+    </div>
+  );
+};
+
+const AdvisorPage = () => {
+  return (
+    <Suspense fallback={<AdvisorPageFallback />}>
+      <AdvisorPageContent />
+    </Suspense>
   );
 };
 
