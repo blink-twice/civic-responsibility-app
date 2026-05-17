@@ -148,6 +148,7 @@ const AdvisorPage: React.FC = () => {
     const scenarioFromQuery = scenarios.find((scenario) => scenario.id === scenarioIdFromQuery);
     if (!scenarioFromQuery) return;
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSelectedCity(scenarioFromQuery.city);
     setSelectedScenarioId(scenarioFromQuery.id);
     setQuery(scenarioFromQuery.subcategory);
@@ -309,7 +310,7 @@ const AdvisorPage: React.FC = () => {
           </div>
 
           {topSuggestions.length > 0 ? (
-            <div className="max-h-[420px] overflow-y-auto p-2">
+            <div className="max-h-105 overflow-y-auto p-2">
               <div className="space-y-2">
                 {topSuggestions.map((scenario) => {
                   const isSelected = selectedScenarioId === scenario.id;
