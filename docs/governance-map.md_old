@@ -1,0 +1,82 @@
+```mermaid
+flowchart TB
+  subgraph CitizenLayer[Citizen starting points]
+    C[Citizen / Resident]
+  end
+
+  %% Municipal layer
+  subgraph Municipal[Municipal Corporation]
+    WC[Ward Corporator / Councillor]
+    WO[Ward Officials (engineers, health, solid waste)]
+    MC[Municipal Commissioner]
+    MAY[Mayor]
+  end
+
+  %% District layer
+  subgraph District[District Administration]
+    DC[District Collector / District Magistrate]
+  end
+
+  %% State layer
+  subgraph State[State Government & Agencies]
+    MLA[MLA]
+    POL[Police (local PS, ACP/DCP, Commissioner)]
+    DIS[Electricity DISCOM]
+    TRANS[State / City Transport Undertaking]
+    FOOD[Food & Civil Supplies / Ration]
+    HEALTHS[State Health Dept & Hospitals]
+  end
+
+  %% Central layer
+  subgraph Central[Central Government & Agencies]
+    MP[MP (Lok Sabha)]
+    RAIL[Indian Railways]
+    NH[NHAI / National Highways]
+    UID[UIDAI (Aadhaar)]
+    ITD[Income Tax / PAN]
+    MEA[Passport (MEA)]
+  end
+
+  %% Main citizen routes
+  C -->|Garbage, local roads, drains, parks, ward schools/dispensaries| WC
+  C -->|Local civic complaints| WO
+  C -->|Crimes, safety, harassment, noise| POL
+  C -->|Electricity supply & billing| DIS
+  C -->|Buses, local public transport| TRANS
+  C -->|Ration, PDS, pensions| FOOD
+  C -->|State hospitals & ambulances| HEALTHS
+  C -->|Railways, highways| RAIL
+  C -->|Aadhaar, PAN, passport| UID
+  C -->|District-wide relief, land acquisition| DC
+
+  %% Municipal escalation paths
+  WC --> WO
+  WO --> MC
+  WC --> MAY
+  MAY --> MC
+
+  %% Between layers
+  WC --> MLA
+  WO --> MLA
+  MLA --> DC
+  MLA --> State
+  DC --> State
+  MP --> Central
+
+  %% MPs as bridge for central agencies and MPLADS
+  C -->|Local development works (MPLADS)| MP
+  MP --> DC
+  MP --> RAIL
+  MP --> NH
+  MP --> MEA
+  MP --> ITD
+
+  %% Legend (optional)
+  classDef elected fill:#fff3cd,stroke:#f0ad4e,stroke-width:1px;
+  classDef admin fill:#e2f0ff,stroke:#0275d8,stroke-width:1px;
+  classDef agency fill:#f5f5f5,stroke:#777,stroke-width:1px;
+
+  class WC,MLA,MP,MAY elected;
+  class WO,MC,DC admin;
+  class POL,DIS,TRANS,FOOD,HEALTHS,RAIL,NH,UID,ITD,MEA agency;
+```
