@@ -1,11 +1,8 @@
 // data/scenarios.ts
 
-export type Layer = "Municipal" | "State" | "Central" | "District";
-
 export type Scenario = {
   id: string;
   city: "Mumbai";
-  layer: Layer;
   category: string;
   subcategory: string;
   scenarioText: string;
@@ -19,7 +16,6 @@ export const scenarios: Scenario[] = [
   {
     id: "mumbai-garbage-1",
     city: "Mumbai",
-    layer: "Municipal",
     category: "Waste & Cleanliness",
     subcategory: "Garbage not collected for 3 days",
     scenarioText:
@@ -43,7 +39,6 @@ export const scenarios: Scenario[] = [
   {
     id: "mumbai-potholes-1",
     city: "Mumbai",
-    layer: "Municipal",
     category: "Roads & Footpaths",
     subcategory: "Potholes on local internal road",
     scenarioText:
@@ -63,7 +58,6 @@ export const scenarios: Scenario[] = [
   {
     id: "mumbai-streetlight-1",
     city: "Mumbai",
-    layer: "Municipal",
     category: "Streetlights",
     subcategory: "Streetlights not working on lane",
     scenarioText:
@@ -83,7 +77,6 @@ export const scenarios: Scenario[] = [
   {
     id: "mumbai-water-1",
     city: "Mumbai",
-    layer: "Municipal",
     category: "Water Supply",
     subcategory: "Irregular municipal water supply",
     scenarioText:
@@ -103,7 +96,6 @@ export const scenarios: Scenario[] = [
   {
     id: "mumbai-drainage-1",
     city: "Mumbai",
-    layer: "Municipal",
     category: "Drains & Flooding",
     subcategory: "Choked drains causing waterlogging",
     scenarioText:
@@ -123,7 +115,6 @@ export const scenarios: Scenario[] = [
   {
     id: "mumbai-park-1",
     city: "Mumbai",
-    layer: "Municipal",
     category: "Parks & Public Spaces",
     subcategory: "Neighbourhood park poorly maintained",
     scenarioText:
@@ -143,7 +134,6 @@ export const scenarios: Scenario[] = [
   {
     id: "mumbai-public-health-1",
     city: "Mumbai",
-    layer: "Municipal",
     category: "Public Health",
     subcategory: "Overflowing public dustbin with rodents",
     scenarioText:
@@ -163,7 +153,6 @@ export const scenarios: Scenario[] = [
   {
     id: "mumbai-building-permissions-1",
     city: "Mumbai",
-    layer: "Municipal",
     category: "Buildings & Permissions",
     subcategory: "Unauthorised construction on neighbour’s building",
     scenarioText:
@@ -183,7 +172,6 @@ export const scenarios: Scenario[] = [
   {
     id: "mumbai-schools-1",
     city: "Mumbai",
-    layer: "Municipal",
     category: "Education",
     subcategory: "Poor condition in municipal school",
     scenarioText:
@@ -203,7 +191,6 @@ export const scenarios: Scenario[] = [
   {
     id: "mumbai-primary-health-1",
     city: "Mumbai",
-    layer: "Municipal",
     category: "Health Facilities",
     subcategory: "Non-functional municipal dispensary",
     scenarioText:
@@ -227,7 +214,6 @@ export const scenarios: Scenario[] = [
 {
   id: "mumbai-police-1",
   city: "Mumbai",
-    layer: "State",
   category: "Law & Order & Safety",
   subcategory: "Street harassment near railway station",
   scenarioText:
@@ -251,7 +237,6 @@ export const scenarios: Scenario[] = [
 {
   id: "mumbai-police-2",
   city: "Mumbai",
-    layer: "State",
   category: "Law & Order & Safety",
   subcategory: "House break-in / theft",
   scenarioText:
@@ -271,7 +256,6 @@ export const scenarios: Scenario[] = [
 {
   id: "mumbai-police-3",
   city: "Mumbai",
-    layer: "State",
   category: "Law & Order & Safety",
   subcategory: "Loud music and noise at night",
   scenarioText:
@@ -296,7 +280,6 @@ export const scenarios: Scenario[] = [
 {
   id: "mumbai-power-1",
   city: "Mumbai",
-    layer: "State",
   category: "Electricity & Power",
   subcategory: "Frequent low voltage and power cuts",
   scenarioText:
@@ -320,7 +303,6 @@ export const scenarios: Scenario[] = [
 {
   id: "mumbai-power-2",
   city: "Mumbai",
-    layer: "State",
   category: "Electricity & Power",
   subcategory: "Dangling / exposed live wires",
   scenarioText:
@@ -340,7 +322,6 @@ export const scenarios: Scenario[] = [
 {
   id: "mumbai-power-3",
   city: "Mumbai",
-    layer: "State",
   category: "Electricity & Power",
   subcategory: "Disputed high electricity bill",
   scenarioText:
@@ -365,7 +346,6 @@ export const scenarios: Scenario[] = [
 {
   id: "mumbai-transport-1",
   city: "Mumbai",
-    layer: "Central",
   category: "Public Transport & Railways",
   subcategory: "Unsafe overcrowding at suburban railway station",
   scenarioText:
@@ -386,7 +366,6 @@ export const scenarios: Scenario[] = [
 {
   id: "mumbai-transport-2",
   city: "Mumbai",
-    layer: "State",
   category: "Public Transport & Railways",
   subcategory: "Bus route withdrawn or reduced",
   scenarioText:
@@ -406,7 +385,6 @@ export const scenarios: Scenario[] = [
 {
   id: "mumbai-transport-3",
   city: "Mumbai",
-    layer: "State",
   category: "Public Transport & Railways",
   subcategory: "Metro station access and last-mile issues",
   scenarioText:
@@ -432,7 +410,6 @@ export const scenarios: Scenario[] = [
 {
   id: "mumbai-ration-1",
   city: "Mumbai",
-    layer: "State",
   category: "Ration & Welfare Schemes",
   subcategory: "Ration shop not giving full entitlement",
   scenarioText:
@@ -453,7 +430,6 @@ export const scenarios: Scenario[] = [
 {
   id: "mumbai-ration-2",
   city: "Mumbai",
-    layer: "State",
   category: "Ration & Welfare Schemes",
   subcategory: "New ration card / name correction stuck",
   scenarioText:
@@ -473,7 +449,6 @@ export const scenarios: Scenario[] = [
 {
   id: "mumbai-welfare-1",
   city: "Mumbai",
-    layer: "State",
   category: "Ration & Welfare Schemes",
   subcategory: "Old age pension not credited",
   scenarioText:
@@ -498,7 +473,6 @@ export const scenarios: Scenario[] = [
 {
   id: "mumbai-state-health-1",
   city: "Mumbai",
-    layer: "State",
   category: "State Hospitals & Health Services",
   subcategory: "Poor conditions in state-run hospital",
   scenarioText:
@@ -519,7 +493,6 @@ export const scenarios: Scenario[] = [
 {
   id: "mumbai-state-health-2",
   city: "Mumbai",
-    layer: "State",
   category: "State Hospitals & Health Services",
   subcategory: "Ambulance / emergency response failure",
   scenarioText:
@@ -540,7 +513,6 @@ export const scenarios: Scenario[] = [
 {
   id: "mumbai-state-health-3",
   city: "Mumbai",
-    layer: "State",
   category: "State Hospitals & Health Services",
   subcategory: "Refusal of treatment in government hospital",
   scenarioText:
@@ -566,7 +538,6 @@ export const scenarios: Scenario[] = [
 {
   id: "mumbai-id-1",
   city: "Mumbai",
-    layer: "Central",
   category: "Central Documents & IDs",
   subcategory: "Aadhaar update or correction issues",
   scenarioText:
@@ -587,7 +558,6 @@ export const scenarios: Scenario[] = [
 {
   id: "mumbai-id-2",
   city: "Mumbai",
-    layer: "Central",
   category: "Central Documents & IDs",
   subcategory: "PAN linked to wrong details",
   scenarioText:
@@ -608,7 +578,6 @@ export const scenarios: Scenario[] = [
 {
   id: "mumbai-id-3",
   city: "Mumbai",
-    layer: "Central",
   category: "Central Documents & IDs",
   subcategory: "Passport delay due to police verification",
   scenarioText:
@@ -633,7 +602,6 @@ export const scenarios: Scenario[] = [
   {
     id: "mumbai-collector-1",
     city: "Mumbai",
-    layer: "District",
     category: "District Administration & Constituency Development",
     subcategory: "Flood relief and compensation after major rains",
     scenarioText:
@@ -658,7 +626,6 @@ export const scenarios: Scenario[] = [
   {
     id: "mumbai-collector-2",
     city: "Mumbai",
-    layer: "District",
     category: "District Administration & Constituency Development",
     subcategory: "Land acquisition for metro / highway project",
     scenarioText:
@@ -682,7 +649,6 @@ export const scenarios: Scenario[] = [
   {
     id: "mumbai-mp-1",
     city: "Mumbai",
-    layer: "District",
     category: "District Administration & Constituency Development",
     subcategory: "Request MPLADS funds for a local community asset",
     scenarioText:
@@ -707,7 +673,6 @@ export const scenarios: Scenario[] = [
   {
     id: "mumbai-mp-2",
     city: "Mumbai",
-    layer: "Central",
     category: "District Administration & Constituency Development",
     subcategory: "Persistent issues with central agencies (railways / national highway)",
     scenarioText:

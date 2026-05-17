@@ -23,7 +23,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
               href="/"
               className="text-sm font-semibold text-slate-900"
             >
-              City Responsibility Advisor
+              ResponsiveCivic
             </Link>
             <div className="flex items-center gap-2 text-sm">
               <Link
