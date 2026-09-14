@@ -147,10 +147,14 @@ const AdvisorPageContent: React.FC = () => {
     return match?.id ?? "";
   }, [initialScenario]);
 
-  const [selectedCity, setSelectedCity] = useState<City>(initialScenario?.city ?? "Mumbai");
+  const [selectedCity, setSelectedCity] = useState<City>(
+    initialScenario?.city ?? "Mumbai"
+  );
   const [query, setQuery] = useState(initialScenario?.subcategory ?? "");
   const [selectedGroup, setSelectedGroup] = useState<string>(initialGroupId);
-  const [selectedScenarioId, setSelectedScenarioId] = useState<string>(initialScenario?.id ?? "");
+  const [selectedScenarioId, setSelectedScenarioId] = useState<string>(
+    initialScenario?.id ?? ""
+  );
   const [showFallbackHelp, setShowFallbackHelp] = useState(false);
 
   const cities = useMemo<City[]>(() => {
@@ -208,14 +212,16 @@ const AdvisorPageContent: React.FC = () => {
           Who is responsible for my issue?
         </h1>
         <p className="max-w-2xl text-sm text-slate-700">
-          Search for the problem you are dealing with, or browse a few broad issue groups. Then pick the closest match to see who to approach first.
+          Search for the problem you are dealing with, or browse a few broad issue
+          groups. Then pick the closest match to see who to approach first.
         </p>
       </div>
 
       {scenarioIdFromQuery && selectedScenario && (
         <div className="mb-5 rounded-lg border border-sky-200 bg-sky-50 p-4 text-sm text-sky-900">
           <p>
-            You opened the Advisor from a quiz question. The matching issue has already been selected below.
+            You opened the Advisor from a quiz question. The matching issue has
+            already been selected below.
           </p>
           {returnTo === "quiz" && (
             <div className="mt-3">
@@ -250,7 +256,10 @@ const AdvisorPageContent: React.FC = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="issue-search" className="mb-2 block text-sm font-medium text-slate-800">
+          <label
+            htmlFor="issue-search"
+            className="mb-2 block text-sm font-medium text-slate-800"
+          >
             Search for your issue
           </label>
           <input
@@ -271,7 +280,9 @@ const AdvisorPageContent: React.FC = () => {
           <div className="flex flex-wrap gap-2">
             {browseGroups.map((group) => {
               const isSelected = selectedGroup === group.id;
-              const count = cityScenarios.filter((scenario) => group.matcher(scenario)).length;
+              const count = cityScenarios.filter((scenario) =>
+                group.matcher(scenario)
+              ).length;
               return (
                 <button
                   key={group.id}
@@ -284,7 +295,11 @@ const AdvisorPageContent: React.FC = () => {
                   }`}
                 >
                   {group.label}{" "}
-                  <span className={`ml-1 text-xs ${isSelected ? "text-indigo-100" : "text-slate-500"}`}>
+                  <span
+                    className={`ml-1 text-xs ${
+                      isSelected ? "text-indigo-100" : "text-slate-500"
+                    }`}
+                  >
                     ({count})
                   </span>
                 </button>
@@ -296,9 +311,12 @@ const AdvisorPageContent: React.FC = () => {
         <div className="rounded-xl border border-indigo-200 bg-indigo-50">
           <div className="flex items-center justify-between border-b border-indigo-100 px-4 py-3">
             <div>
-              <h2 className="text-sm font-semibold text-slate-900">Matching issues</h2>
+              <h2 className="text-sm font-semibold text-slate-900">
+                Matching issues
+              </h2>
               <p className="text-xs text-slate-600">
-                {visibleScenarios.length} result{visibleScenarios.length === 1 ? "" : "s"}
+                {visibleScenarios.length} result
+                {visibleScenarios.length === 1 ? "" : "s"}
               </p>
             </div>
           </div>
@@ -324,7 +342,9 @@ const AdvisorPageContent: React.FC = () => {
                           {scenario.category}
                         </span>
                       </div>
-                      <p className="text-sm font-medium text-slate-900">{scenario.subcategory}</p>
+                      <p className="text-sm font-medium text-slate-900">
+                        {scenario.subcategory}
+                      </p>
                       <p className="mt-1 text-sm text-slate-600 line-clamp-2">
                         {scenario.scenarioText}
                       </p>
@@ -335,7 +355,11 @@ const AdvisorPageContent: React.FC = () => {
             </div>
           ) : (
             <div className="p-4 text-sm text-slate-700">
-              No exact match found. Try broader words like <span className="font-medium">garbage</span>, <span className="font-medium">police</span>, <span className="font-medium">passport</span>, or <span className="font-medium">water</span>.
+              No exact match found. Try broader words like{" "}
+              <span className="font-medium">garbage</span>,{" "}
+              <span className="font-medium">police</span>,{" "}
+              <span className="font-medium">passport</span>, or{" "}
+              <span className="font-medium">water</span>.
             </div>
           )}
         </div>
@@ -364,7 +388,9 @@ const AdvisorPageContent: React.FC = () => {
               <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-sky-700">
                 Situation
               </p>
-              <p className="text-sm text-slate-800">{selectedScenario.scenarioText}</p>
+              <p className="text-sm text-slate-800">
+                {selectedScenario.scenarioText}
+              </p>
             </div>
 
             <div className="grid gap-4 lg:grid-cols-2">
@@ -372,45 +398,56 @@ const AdvisorPageContent: React.FC = () => {
                 <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-emerald-700">
                   Best first stop
                 </p>
-                <p className="text-sm font-medium text-slate-900">{selectedScenario.primaryAuthority}</p>
+                <p className="text-sm font-medium text-slate-900">
+                  {selectedScenario.primaryAuthority}
+                </p>
               </div>
 
               <div className="rounded-lg border border-amber-200 bg-white p-4">
                 <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-amber-700">
                   If unresolved
                 </p>
-                <p className="text-sm font-medium text-slate-900">{selectedScenario.secondaryAuthority}</p>
+                <p className="text-sm font-medium text-slate-900">
+                  {selectedScenario.secondaryAuthority}
+                </p>
               </div>
             </div>
 
             <div className="mt-4 rounded-lg border border-violet-200 bg-white p-4">
-              <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-violet-700">Why this route</p>
-              <p className="text-sm text-slate-800">{selectedScenario.explanation}</p>
+              <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-violet-700">
+                Why this route
+              </p>
+              <p className="text-sm text-slate-800">
+                {selectedScenario.explanation}
+              </p>
             </div>
 
-            {selectedScenario.actionLinks && selectedScenario.actionLinks.length > 0 && (
-              <div className="mt-4">
-                <p className="mb-2 text-sm font-medium text-slate-900">Suggested next steps</p>
-                <div className="flex flex-wrap gap-3">
-                  {selectedScenario.actionLinks.map((link) => {
-                    const isHttp = link.url.startsWith("http");
-                    const isTel = link.url.startsWith("tel:");
-                    return (
-                      <a
-                        key={`${selectedScenario.id}-${link.label}`}
-                        href={link.url}
-                        target={isHttp ? "_blank" : undefined}
-                        rel={isHttp ? "noopener noreferrer" : undefined}
-                        className="inline-flex rounded-md border border-sky-300 bg-white px-4 py-2 text-sm font-medium text-sky-900 transition-colors duration-200 hover:bg-sky-50"
-                      >
-                        {link.label}
-                        {isTel ? ` (${link.url.replace("tel:", "")})` : ""}
-                      </a>
-                    );
-                  })}
+            {selectedScenario.actionLinks &&
+              selectedScenario.actionLinks.length > 0 && (
+                <div className="mt-4">
+                  <p className="mb-2 text-sm font-medium text-slate-900">
+                    Suggested next steps
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    {selectedScenario.actionLinks.map((link) => {
+                      const isHttp = link.url.startsWith("http");
+                      const isTel = link.url.startsWith("tel:");
+                      return (
+                        <a
+                          key={`${selectedScenario.id}-${link.label}`}
+                          href={link.url}
+                          target={isHttp ? "_blank" : undefined}
+                          rel={isHttp ? "noopener noreferrer" : undefined}
+                          className="inline-flex rounded-md border border-sky-300 bg-white px-4 py-2 text-sm font-medium text-sky-900 transition-colors duration-200 hover:bg-sky-50"
+                        >
+                          {link.label}
+                          {isTel ? ` (${link.url.replace("tel:", "")})` : ""}
+                        </a>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
           </motion.section>
         )}
       </AnimatePresence>
@@ -418,9 +455,12 @@ const AdvisorPageContent: React.FC = () => {
       <section className="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4 shadow-sm">
         <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
           <div className="md:max-w-2xl">
-            <h2 className="text-sm font-semibold text-slate-900">Can’t find your issue?</h2>
+            <h2 className="text-sm font-semibold text-slate-900">
+              Can’t find your issue?
+            </h2>
             <p className="mt-1 text-sm text-slate-700">
-              Use this only if the exact issue is not listed or you are unsure how to classify it.
+              Use this only if the exact issue is not listed or you are unsure how
+              to classify it.
             </p>
           </div>
           <button
@@ -435,7 +475,10 @@ const AdvisorPageContent: React.FC = () => {
         {showFallbackHelp && (
           <div className="mt-4 grid gap-3 md:grid-cols-2">
             {fallbackGuidance.map((item) => (
-              <div key={item} className="rounded-lg border border-amber-100 bg-white p-3 text-sm text-slate-700">
+              <div
+                key={item}
+                className="rounded-lg border border-amber-100 bg-white p-3 text-sm text-slate-700"
+              >
                 {item}
               </div>
             ))}
@@ -444,9 +487,12 @@ const AdvisorPageContent: React.FC = () => {
       </section>
 
       <section className="mt-4 rounded-xl border border-sky-200 bg-sky-50 p-4 shadow-sm">
-        <h2 className="text-sm font-semibold text-slate-900">Need to find your MLA, councillor, or MP?</h2>
+        <h2 className="text-sm font-semibold text-slate-900">
+          Need to find your MLA, councillor, or MP?
+        </h2>
         <p className="mt-1 text-sm text-slate-700">
-          Once you know which kind of representative matters for your issue, use these links to identify the right person or ward for your area.
+          Once you know which kind of representative matters for your issue, use
+          these links to identify the right person or ward for your area.
         </p>
 
         <div className="mt-4 grid gap-3 md:grid-cols-3">
