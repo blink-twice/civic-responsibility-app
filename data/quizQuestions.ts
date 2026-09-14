@@ -515,4 +515,50 @@ export const quizQuestions: QuizQuestion[] = [
     explanation:
       "MPs are especially relevant where central agencies are involved. They do not run the agencies directly, but they can escalate issues politically and through Parliament or ministry channels.",
   },
+
+  {
+    id: "q-stray-1",
+    scenarioId: "mumbai-stray-dogs-1",
+    question:
+      "Outside your housing society gate, street dogs bark at night and sometimes chase passers-by, but there have been no serious bites. Which authority is primarily responsible for acting on such stray dog nuisance in Mumbai?",
+    options: [
+      "Local police station",
+      "BMC Veterinary Health / Dog Control Department via 1916 or the VHD portal",
+      "Your MP",
+      "Passport Seva Kendra",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Under the Animal Birth Control Rules and municipal regulations, everyday stray dog nuisance on city roads is handled by the municipal veterinary and dog control machinery, not by the police or central agencies. Complaints should go through BMC’s helpline and veterinary grievance channels so ABC teams can sterilise and vaccinate dogs in the area instead of simply trying to remove them.",
+  },
+  {
+    id: "q-stray-2",
+    scenarioId: "mumbai-stray-dogs-2",
+    question:
+      "A neighbour is bitten by a street dog that seems disoriented and aggressive. Which combination of actions is most appropriate?",
+    options: [
+      "Complain to your ward corporator only",
+      "Take the person immediately to a government hospital for anti-rabies treatment and lodge a complaint with BMC’s veterinary / dog control department",
+      "Call the electricity company and ask them to remove the dog",
+      "Write first to your MP about cruelty to animals",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Dog bite incidents require urgent medical attention and also trigger municipal responsibilities for tracking and vaccinating dogs. The correct route is to get the victim treated at a government facility and report the incident and suspected rabid dog through BMC’s veterinary grievance channels.",
+  },
+  {
+    id: "q-stray-3",
+    scenarioId: "mumbai-stray-dogs-3",
+    question:
+      "Residents in your building demand that sterilised community dogs be permanently removed from the lane. Which statement best reflects the current legal position?",
+    options: [
+      "Municipal authorities are required to remove all street dogs if any resident complains",
+      "Municipal authorities must sterilise, vaccinate and return community dogs to their original locality; permanent removal is generally not permitted just because some residents dislike them",
+      "The police must confiscate all community dogs and send them to prison",
+      "Residents can lawfully poison dogs if they feel unsafe",
+    ],
+    correctIndex: 1,
+    explanation:
+      "ABC Rules and animal welfare guidelines make municipal corporations responsible for sterilising, vaccinating and returning community dogs rather than removing them permanently on demand. Understanding this helps citizens frame complaints and representations within the correct legal and administrative route.",
+  },
 ];

@@ -731,4 +731,88 @@ export const scenarios: Scenario[] = [
       },
     ],
   },
+
+  // ==============================
+  // Municipal: Stray dogs & animal nuisance
+  // ==============================
+
+  {
+    id: "mumbai-stray-dogs-1",
+    city: "Mumbai",
+    layer: "Municipal",
+    category: "Stray dogs & nuisance",
+    subcategory: "Stray dogs barking and chasing near housing society gate",
+    scenarioText:
+      "Outside your housing society gate, a group of street dogs bark loudly at night and sometimes chase passing cyclists and pedestrians, but there have been no serious bite incidents yet.",
+    primaryAuthority:
+      "BMC Veterinary Health / Dog Control Department via ward dog control office or 1916 civic helpline",
+    secondaryAuthority:
+      "Municipal Commissioner and ward officer; State Animal Birth Control Monitoring Committee / Animal Welfare Board of India if the Animal Birth Control programme is not implemented as required",
+    explanation:
+      "Under the Animal Birth Control Rules and municipal regulations, day-to-day stray dog nuisance in city lanes is handled by the municipal veterinary or dog control department, which is expected to sterilise, vaccinate and return dogs to their locality rather than simply remove them. Complaints should be lodged through the civic helpline or veterinary grievance portal so the Animal Birth Control teams can schedule drives in the affected area.",
+    actionLinks: [
+      {
+        label: "Register stray dog nuisance / sterilisation request (BMC VHD portal)",
+        url: "https://vhd.mcgm.gov.in/register-grievance",
+      },
+      {
+        label: "Call BMC civic helpline for animal issues",
+        url: "tel:1916",
+      },
+    ],
+  },
+  {
+    id: "mumbai-stray-dogs-2",
+    city: "Mumbai",
+    layer: "Municipal",
+    category: "Stray dogs & nuisance",
+    subcategory: "Dog bite in lane and suspected rabid dog",
+    scenarioText:
+      "A neighbour is bitten by a street dog in your lane, and the dog is behaving unusually aggressive or disoriented, raising fears that it may be rabid.",
+    primaryAuthority:
+      "Nearest government hospital for immediate anti-rabies treatment; BMC Veterinary Health / Dog Control Department for complaint about suspected rabid dog and dog bite",
+    secondaryAuthority:
+      "Municipal health department and veterinary officers; District health authorities and State Animal Welfare Board if rabies response and Animal Birth Control measures are not being carried out",
+    explanation:
+      "Dog bites and suspected rabid dogs require a dual response: urgent medical treatment at a government health facility for the person bitten, and a formal complaint to the municipal veterinary department so the dog can be traced, vaccinated or assessed under the Animal Birth Control programme. The municipal corporation is responsible for dog sterilisation, vaccination and dog-bite reporting and must coordinate with health and veterinary authorities.",
+    actionLinks: [
+      {
+        label: "Anti-rabies treatment information (Mumbai government hospitals)",
+        url: "https://example.com/mumbai-anti-rabies-info",
+      },
+      {
+        label: "Report dog bite / suspected rabid dog (BMC VHD portal)",
+        url: "https://vhd.mcgm.gov.in/register-grievance",
+      },
+      {
+        label: "Call BMC civic helpline for dog bite reporting",
+        url: "tel:1916",
+      },
+    ],
+  },
+  {
+    id: "mumbai-stray-dogs-3",
+    city: "Mumbai",
+    layer: "Municipal",
+    category: "Stray dogs & nuisance",
+    subcategory: "Residents demand removal of sterilised community dogs",
+    scenarioText:
+      "Some residents in your building want all street dogs permanently removed from the lane, even though the dogs have already been sterilised and vaccinated under the municipal programme and are generally non-aggressive.",
+    primaryAuthority:
+      "Municipal commissioner and BMC Veterinary Health / Animal Birth Control cell via written representation",
+    secondaryAuthority:
+      "State Animal Welfare Board and Animal Welfare Board of India, which monitor implementation of the Animal Birth Control Rules by local bodies",
+    explanation:
+      "Current national and municipal rules do not permit permanent removal or relocation of sterilised community dogs simply because of general dislike. Municipal corporations are tasked with sterilisation, vaccination and return of street dogs to their original locality, and residents who want lawful action must work within the Animal Birth Control framework. Complaints and representations about ABC implementation and dog nuisance should be addressed to municipal authorities and, if needed, to state and national animal welfare boards.",
+    actionLinks: [
+      {
+        label: "Read BMC / Animal Birth Control guidelines for pet and street dogs",
+        url: "https://vhd.mcgm.gov.in",
+      },
+      {
+        label: "Write to municipal commissioner and State Animal Welfare Board",
+        url: "https://example.com/abc-rules-complaint",
+      },
+    ],
+  },
 ];
