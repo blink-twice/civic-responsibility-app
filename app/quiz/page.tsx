@@ -37,7 +37,10 @@ const shuffleArray = <T,>(items: T[]): T[] => {
 };
 
 const buildQuizAttempt = (): QuizQuestion[] => {
-  return shuffleArray(quizQuestions).slice(0, Math.min(QUIZ_LENGTH, quizQuestions.length));
+  return shuffleArray(quizQuestions).slice(
+    0,
+    Math.min(QUIZ_LENGTH, quizQuestions.length)
+  );
 };
 
 const createFreshSession = (): QuizSession => ({
@@ -77,7 +80,9 @@ const QuizPage: React.FC = () => {
   }, [quizState, isHydrated]);
 
   const scenarioLookup = useMemo(() => {
-    return Object.fromEntries(scenarios.map((scenario) => [scenario.id, scenario]));
+    return Object.fromEntries(
+      scenarios.map((scenario) => [scenario.id, scenario])
+    );
   }, []);
 
   const {
@@ -91,10 +96,18 @@ const QuizPage: React.FC = () => {
   } = quizState;
 
   const totalQuestions = attemptQuestions.length;
-  const currentQuestion: QuizQuestion | undefined = attemptQuestions[currentIndex];
-  const currentScenario = currentQuestion ? scenarioLookup[currentQuestion.scenarioId] : undefined;
-  const selectedOption = selectedOptionIndex !== null && currentQuestion ? currentQuestion.options[selectedOptionIndex] : null;
-  const correctOption = currentQuestion ? currentQuestion.options[currentQuestion.correctIndex] : null;
+  const currentQuestion: QuizQuestion | undefined =
+    attemptQuestions[currentIndex];
+  const currentScenario = currentQuestion
+    ? scenarioLookup[currentQuestion.scenarioId]
+    : undefined;
+  const selectedOption =
+    selectedOptionIndex !== null && currentQuestion
+      ? currentQuestion.options[selectedOptionIndex]
+      : null;
+  const correctOption = currentQuestion
+    ? currentQuestion.options[currentQuestion.correctIndex]
+    : null;
 
   const layerSummary = useMemo(() => {
     const summary: Record<string, { correct: number; total: number }> = {};
@@ -127,8 +140,12 @@ const QuizPage: React.FC = () => {
   if (!isHydrated) {
     return (
       <>
-        <h1 className="mb-4 text-2xl font-semibold text-slate-900">Civic roles quiz</h1>
-        <p className="text-sm text-slate-700">Loading your current quiz attempt...</p>
+        <h1 className="mb-4 text-2xl font-semibold text-slate-900">
+          Civic roles quiz
+        </h1>
+        <p className="text-sm text-slate-700">
+          Loading your current quiz attempt...
+        </p>
       </>
     );
   }
@@ -136,14 +153,23 @@ const QuizPage: React.FC = () => {
   if (!currentQuestion && !completed) {
     return (
       <>
-        <h1 className="mb-4 text-2xl font-semibold text-slate-900">Civic roles quiz</h1>
-        <p className="text-sm text-slate-800">No quiz questions are configured yet.</p>
+        <h1 className="mb-4 text-2xl font-semibold text-slate-900">
+          Civic roles quiz
+        </h1>
+        <p className="text-sm text-slate-800">
+          No quiz questions are configured yet.
+        </p>
       </>
     );
   }
 
   const handleOptionClick = (index: number) => {
-    if (selectedOptionIndex !== null || completed || !currentQuestion || !currentScenario) {
+    if (
+      selectedOptionIndex !== null ||
+      completed ||
+      !currentQuestion ||
+      !currentScenario
+    ) {
       return;
     }
 
@@ -193,9 +219,13 @@ const QuizPage: React.FC = () => {
   return (
     <>
       <div className="mb-5">
-        <h1 className="mb-2 text-2xl font-semibold text-slate-900">Civic roles quiz</h1>
+        <h1 className="mb-2 text-2xl font-semibold text-slate-900">
+          Civic roles quiz
+        </h1>
         <p className="text-sm text-slate-700">
-          Each attempt gives you {QUIZ_LENGTH} random questions. The goal is to understand how different kinds of service delivery and civic issues need to be approached.
+          Each attempt gives you {QUIZ_LENGTH} random questions. The goal is to
+          understand how different kinds of service delivery and civic issues need
+          to be approached.
         </p>
       </div>
 
@@ -203,10 +233,12 @@ const QuizPage: React.FC = () => {
         <>
           <div className="mb-4 grid gap-3 sm:grid-cols-2">
             <div className="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
-              <span className="font-medium text-slate-900">Question</span> {currentIndex + 1} of {totalQuestions}
+              <span className="font-medium text-slate-900">Question</span>{" "}
+              {currentIndex + 1} of {totalQuestions}
             </div>
             <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 sm:text-right">
-              <span className="font-medium text-amber-900">Score</span> {score} / {totalQuestions}
+              <span className="font-medium text-amber-900">Score</span> {score} /{" "}
+              {totalQuestions}
             </div>
           </div>
 
@@ -225,13 +257,19 @@ const QuizPage: React.FC = () => {
                 </span>
               </div>
 
-              <p className="mb-4 text-base font-medium text-slate-900">{currentQuestion.question}</p>
+              <p className="mb-4 text-base font-medium text-slate-900">
+                {currentQuestion.question}
+              </p>
 
               <div className="space-y-3">
                 {currentQuestion.options.map((option, index) => {
                   const isSelected = selectedOptionIndex === index;
-                  const isCorrect = showExplanation && currentQuestion.correctIndex === index;
-                  const isIncorrect = showExplanation && isSelected && currentQuestion.correctIndex !== index;
+                  const isCorrect =
+                    showExplanation && currentQuestion.correctIndex === index;
+                  const isIncorrect =
+                    showExplanation &&
+                    isSelected &&
+                    currentQuestion.correctIndex !== index;
 
                   const baseClasses =
                     "w-full text-left rounded-lg border px-3 py-3 text-sm transition-colors transition-transform duration-200 ease-out";
@@ -239,11 +277,13 @@ const QuizPage: React.FC = () => {
                     "border-slate-300 bg-white text-slate-900 hover:bg-slate-50";
 
                   if (!showExplanation && isSelected) {
-                    colorClasses = "border-indigo-500 bg-indigo-100 text-indigo-950";
+                    colorClasses =
+                      "border-indigo-500 bg-indigo-100 text-indigo-950";
                   }
 
                   if (showExplanation && isCorrect) {
-                    colorClasses = "border-emerald-500 bg-emerald-50 text-emerald-950";
+                    colorClasses =
+                      "border-emerald-500 bg-emerald-50 text-emerald-950";
                   } else if (showExplanation && isIncorrect) {
                     colorClasses = "border-rose-500 bg-rose-50 text-rose-950";
                   }
@@ -253,7 +293,11 @@ const QuizPage: React.FC = () => {
                       key={option}
                       type="button"
                       onClick={() => handleOptionClick(index)}
-                      className={`${baseClasses} ${colorClasses} ${selectedOptionIndex === null ? "hover:-translate-y-0.5 hover:shadow-sm" : ""}`}
+                      className={`${baseClasses} ${colorClasses} ${
+                        selectedOptionIndex === null
+                          ? "hover:-translate-y-0.5 hover:shadow-sm"
+                          : ""
+                      }`}
                     >
                       {option}
                     </button>
@@ -274,28 +318,46 @@ const QuizPage: React.FC = () => {
                     >
                       <div className="grid gap-3 md:grid-cols-2">
                         <div className="rounded-lg border border-rose-200 bg-white p-3">
-                          <p className="text-xs font-semibold uppercase tracking-wide text-rose-600">Your answer</p>
-                          <p className="mt-1 font-medium text-slate-900">{selectedOption}</p>
+                          <p className="text-xs font-semibold uppercase tracking-wide text-rose-600">
+                            Your answer
+                          </p>
+                          <p className="mt-1 font-medium text-slate-900">
+                            {selectedOption}
+                          </p>
                         </div>
                         <div className="rounded-lg border border-emerald-200 bg-white p-3">
-                          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Best first stop</p>
-                          <p className="mt-1 font-medium text-slate-900">{correctOption}</p>
+                          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-700">
+                            Best first stop
+                          </p>
+                          <p className="mt-1 font-medium text-slate-900">
+                            {correctOption}
+                          </p>
                         </div>
                       </div>
 
                       <div className="rounded-lg border border-sky-200 bg-white p-3">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Why</p>
+                        <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">
+                          Why
+                        </p>
                         <p className="mt-1">{currentQuestion.explanation}</p>
                       </div>
 
                       <div className="grid gap-3 md:grid-cols-2">
                         <div className="rounded-lg border border-violet-200 bg-white p-3">
-                          <p className="text-xs font-semibold uppercase tracking-wide text-violet-700">Issue type</p>
-                          <p className="mt-1 text-slate-900">{currentScenario.layer} • {currentScenario.category}</p>
+                          <p className="text-xs font-semibold uppercase tracking-wide text-violet-700">
+                            Issue type
+                          </p>
+                          <p className="mt-1 text-slate-900">
+                            {currentScenario.layer} • {currentScenario.category}
+                          </p>
                         </div>
                         <div className="rounded-lg border border-amber-200 bg-white p-3">
-                          <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">If unresolved</p>
-                          <p className="mt-1 text-slate-900">{currentScenario.secondaryAuthority}</p>
+                          <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">
+                            If unresolved
+                          </p>
+                          <p className="mt-1 text-slate-900">
+                            {currentScenario.secondaryAuthority}
+                          </p>
                         </div>
                       </div>
 
@@ -309,8 +371,16 @@ const QuizPage: React.FC = () => {
                         {currentScenario.actionLinks[0] && (
                           <a
                             href={currentScenario.actionLinks[0].url}
-                            target={currentScenario.actionLinks[0].url.startsWith("http") ? "_blank" : undefined}
-                            rel={currentScenario.actionLinks[0].url.startsWith("http") ? "noreferrer" : undefined}
+                            target={
+                              currentScenario.actionLinks[0].url.startsWith("http")
+                                ? "_blank"
+                                : undefined
+                            }
+                            rel={
+                              currentScenario.actionLinks[0].url.startsWith("http")
+                                ? "noreferrer"
+                                : undefined
+                            }
                             className="rounded-md bg-sky-600 px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-sky-700"
                           >
                             {currentScenario.actionLinks[0].label}
@@ -329,7 +399,9 @@ const QuizPage: React.FC = () => {
                   disabled={!showExplanation}
                   className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors duration-200 hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-indigo-300"
                 >
-                  {currentIndex >= totalQuestions - 1 ? "Finish quiz" : "Next question"}
+                  {currentIndex >= totalQuestions - 1
+                    ? "Finish quiz"
+                    : "Next question"}
                 </button>
               </div>
             </motion.section>
@@ -346,17 +418,30 @@ const QuizPage: React.FC = () => {
           transition={{ duration: 0.25, ease: "easeOut" }}
           className="mt-6 rounded-xl border border-emerald-200 bg-emerald-50 p-5 shadow-sm"
         >
-          <h2 className="mb-3 text-xl font-semibold text-slate-900">Quiz completed</h2>
-          <p className="mb-2 text-base text-slate-800">You scored {score} / {totalQuestions}</p>
+          <h2 className="mb-3 text-xl font-semibold text-slate-900">
+            Quiz completed
+          </h2>
+          <p className="mb-2 text-base text-slate-800">
+            You scored {score} / {totalQuestions}
+          </p>
           <p className="mb-5 text-sm text-slate-700">{getScoreMessage()}</p>
 
           <div className="mb-5 rounded-lg border border-amber-200 bg-amber-50 p-4">
-            <p className="mb-3 text-sm font-medium text-slate-900">How your answers broke down</p>
+            <p className="mb-3 text-sm font-medium text-slate-900">
+              How your answers broke down
+            </p>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {Object.entries(layerSummary).map(([layer, data]) => (
-                <div key={layer} className="rounded-md border border-white/70 bg-white p-3">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{layer}</p>
-                  <p className="mt-1 text-sm text-slate-900">{data.correct} correct out of {data.total}</p>
+                <div
+                  key={layer}
+                  className="rounded-md border border-white/70 bg-white p-3"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    {layer}
+                  </p>
+                  <p className="mt-1 text-sm text-slate-900">
+                    {data.correct} correct out of {data.total}
+                  </p>
                 </div>
               ))}
             </div>
